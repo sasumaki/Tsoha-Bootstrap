@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Muokkaa Sven</h1>
+
+  <form>
+    
+    <div class="form-group">
+      <label>Nimi</label>
+      <input type="text" class="form-control" value="Sven the Rogue Knight">
+    </div>
+    <div class="form-group">
+      <label>Primary Attribute</label>
+      <input type="text" class="form-control" value="Strength">
+    </div>
+    <div class="form-group">
+      <label>Attack Type</label>
+      <input type="text" class="form-control" value="Melee">
+    </div>
+      <div class="form-group">
+      <label>Primary Role</label>
+      <input type="text" class="form-control" value="Core">
+    </div>
+      </div>
+      <div class="form-group">
+      <label>Damage Type</label>
+      <input type="text" class="form-control" value="Physical">
+    </div>
+    <div class="form-group">
+      <label>Kuvaus</label>
+      <textarea class="form-control">Sven the Rogue Knight is a versatile melee strength hero with superior physical power yet is coupled with various abilities that provide utility. He can fulfill various roles, but is often played as a semi-carry due to his high utility even without items.  </p>
+
+      </textarea>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Tallenna</button>
+    </div>
+  </form>
+{% endblock %}
