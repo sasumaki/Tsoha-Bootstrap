@@ -5,6 +5,11 @@ Yleisiä linkkejä:
 * [Linkki sovellukseeni](http://sasumaki.users.cs.helsinki.fi/Dota-arkisto/)
 * [Linkki dokumentaatiooni](https://github.com/sasumaki/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
 
+Pääsivu: http://sasumaki.users.cs.helsinki.fi/Dota-arkisto/lista
+Muokkaussivu: http://sasumaki.users.cs.helsinki.fi/Dota-arkisto/modify
+Näyttösivu: http://sasumaki.users.cs.helsinki.fi/Dota-arkisto/show
+loginsivu: http://sasumaki.users.cs.helsinki.fi/Dota-arkisto/login
+
 ## Työn aihe
 
 Dota-arkisto. Dota 2 videopeliin liittyvä tietokanta, jonka tarkoitus on auttaa pelin pelaamisessa.
