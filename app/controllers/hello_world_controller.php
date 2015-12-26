@@ -1,4 +1,5 @@
 <?php
+require 'app/models/Hero.php';
 
 class HelloWorldController extends BaseController {
 
@@ -9,7 +10,11 @@ class HelloWorldController extends BaseController {
 
     public static function sandbox() {
         // Testaa koodiasi täällä
-        View::make('helloworld.html');
+        $Sven = Hero::find(1);
+        $Heroes = Hero::all();
+        
+        Kint::dump($Heroes);
+        Kint::dump($Sven);
     }
 
     public static function lista() {

@@ -14,9 +14,8 @@ published DATE
 
 CREATE TABLE HERO(
 id SERIAL PRIMARY KEY,
-draft_id INTEGER REFERENCES Draft(id),
 name varchar(50) NOT NULL,
-primary_attribute varchar(50) NOT NULL,
+primaryattribute varchar(50) NOT NULL,
 attack_type varchar(50) NOT NULL,
 primary_role varchar(50) NOT NULL,
 damage_type varchar(50) NOT NULL,
