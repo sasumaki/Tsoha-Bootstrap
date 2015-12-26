@@ -18,7 +18,7 @@ class HelloWorldController extends BaseController {
     }
 
     public static function lista() {
-        View::make('suunnitelmat/lista.html');
+        View::make('hero/lista.html');
     }
 
     public static function show() {

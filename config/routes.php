@@ -7,6 +7,18 @@ $routes->get('/', function() {
 $routes->get('/hiekkalaatikko', function() {
     HelloWorldController::sandbox();
 });
+$routes->get('/hero', function() {
+    HeroController::lista();
+});
+$routes->post('/hero', function() {
+    HeroController::store();
+});
+$routes->get('/hero/new', function() {
+    HeroController::create();
+});
+$routes->get('/hero/:id', function($id) {
+    HeroController::show($id);
+});
 $routes->get('/lista', function() {
     HelloWorldController::lista();
 });
