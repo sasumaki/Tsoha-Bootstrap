@@ -9,7 +9,7 @@ class Hero extends BaseModel {
     }
 
     public function save() {
-        $query = DB::connection()->prepare('INSERT INTO Hero (name, primaryattribute, attacktype, primaryrole, damagetype, description VALUES(:name, :primaryattribute, :attacktype, :primaryrole, :damagetype, :description RETURNING id');
+        $query = DB::connection()->prepare('INSERT INTO Hero (name, primaryattribute, attacktype, primaryrole, damagetype, description) VALUES(:name, :primaryattribute, :attacktype, :primaryrole, :damagetype, :description) RETURNING id');
         $query->execute(array('name' => $this->name, 'primaryattribute' => $this->primaryattribute, 'attacktype' => $this->attacktype, 'primaryrole' => $this->primaryrole, 'damagetype' => $this->damagetype, 'description' => $this->description));
         $row = $query->fetch();
         Kint::trace();

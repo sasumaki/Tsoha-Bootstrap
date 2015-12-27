@@ -5,6 +5,9 @@ Yleisiä linkkejä:
 * [Linkki sovellukseeni](http://sasumaki.users.cs.helsinki.fi/Dota-arkisto/)
 * [Linkki dokumentaatiooni](https://github.com/sasumaki/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
 
+PÄÄSIVU: http://sasumaki.users.cs.helsinki.fi/Dota-arkisto/hero
+
+Suunnitelmia:
 Pääsivu: http://sasumaki.users.cs.helsinki.fi/Dota-arkisto/lista
 Muokkaussivu: http://sasumaki.users.cs.helsinki.fi/Dota-arkisto/modify
 Näyttösivu: http://sasumaki.users.cs.helsinki.fi/Dota-arkisto/show

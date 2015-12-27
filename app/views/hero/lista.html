@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Dota-arkisto</h1>
-
+<p>
+    <a href="{{base_path}}/hero/new" class="btn btn-success"> Lisää Hero</a>
+</p>
 
 
 <table class="table table-striped table-bordered">
@@ -24,6 +26,7 @@
             <td>{{hero.primaryrole}}</td>
             <td>{{hero.damagetype}}</td>
         </tr>
+        {% endfor%}
         
     </tbody>
 </table>

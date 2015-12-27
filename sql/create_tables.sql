@@ -16,9 +16,9 @@ CREATE TABLE HERO(
 id SERIAL PRIMARY KEY,
 name varchar(50) NOT NULL,
 primaryattribute varchar(50) NOT NULL,
-attack_type varchar(50) NOT NULL,
-primary_role varchar(50) NOT NULL,
-damage_type varchar(50) NOT NULL,
+attacktype varchar(50) NOT NULL,
+primaryrole varchar(50) NOT NULL,
+damagetype varchar(50) NOT NULL,
 description varchar(400)
 
 );

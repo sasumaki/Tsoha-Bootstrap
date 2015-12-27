@@ -9,7 +9,10 @@ class HeroController extends BaseController {
 
     public static function show($id) {
         $heroes = Hero::find($id);
-        View::make('hero/:id', array('heroes' => $heroes));
+        View::make('hero/show.html', array('hero' => $heroes));
+    }
+    public static function create() {
+         View::make('hero/new.html');
     }
 
     public static function store() {
@@ -24,6 +27,7 @@ class HeroController extends BaseController {
         ));
         Kint::dump($params);
         $hero->save();
+        Redirect::to('/hero');
     }
 
 }
