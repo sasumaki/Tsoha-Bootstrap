@@ -6,6 +6,7 @@ class Hero extends BaseModel {
 
     public function __construct($attributes) {
         parent::__construct($attributes);
+        $this->validators = array('validate_name', 'validate_attribute', 'validate_damagetype', 'validate_attacktype', 'validate_primaryrole');
     }
 
     public function save() {
@@ -59,25 +60,69 @@ class Hero extends BaseModel {
         return null;
     }
 
-//    public static function findattribute($primaryattribute) {
-//        $query = DB::connection()->prepare('SELECT * FROM Hero WHERE primaryattribute = :primaryattribute');
-//        $query->execute(array('primaryattribute' => $primaryattribute));
-//        $rows = $query->fetchAll();
-//        $heroes = array();
-//
-//        foreach ($rows as $row) {
-//            $heroes[] = new Hero(array(
-//                'id' => $row['id'],
-//                'name' => $row['name'],
-//                'primaryattribute' => $row['primaryattribute'],
-//                'attacktype' => $row['attacktype'],
-//                'primaryrole' => $row['primaryrole'],
-//                'damagetype' => $row['damagetype'],
-//                'description' => $row['description']
-//            ));
-//
-//            return $heroes;
-//        }
-//        return null;
-//    }
+    public function validate_name() {
+        $errors = array();
+        if ($this->name == '' || $this->name == null) {
+            $errors[] = 'Nimi ei saa olla tyhjä';
+        }
+        if (strlen($this->name) < 2) {
+            $errors[] = 'Nimen pituuden tulee olla vähintään kaksi merkkiä!';
+        }
+        return $errors;
+    }
+
+    public function validate_attribute() {
+        $errors = array();
+        if ($this->primaryattribute != 'Strength' || $this->primaryattribute != 'Intelligence' || $this->primaryattribute != 'Agility') {
+            $errors[] = 'Attribuuteiksi käy vain Strength, Intelligence tai Agility!';
+        }
+        return $errors;
+    }
+
+    public function validate_primaryrole() {
+        $errors = array();
+        if ($this->primaryrole != 'Core' || $this->primaryrole != 'Support' || $this->primaryattribute != 'Hybrid') {
+            $errors[] = 'Rooleiksi käy vain Core, Support tai Hybrid!';
+        }
+        return $errors;
+    }
+
+    public function validate_attacktype() {
+        $errors = array();
+        if ($this->attacktype != 'Melee' || $this->attacktype != 'Ranged' || $this->attacktype != 'Hybrid') {
+            $errors[] = 'Attacktyypeiksi käy vain Melee, Ranged tai Hybrid!';
+        }
+        return $errors;
+    }
+
+    public function validate_damagetype() {
+        $errors = array();
+        if ($this->damagetype != 'Magical' || $this->damagetype != 'Physical' || $this->damagetype != 'Hybrid') {
+            $errors[] = 'Damagetyypeiksi käy vain Magical, Physical tai Hybrid!';
+        }
+        return $errors;
+    }
+
+    public static function findattribute($primaryattribute) {
+        $query = DB::connection()->prepare('SELECT * FROM Hero WHERE primaryattribute = :primaryattribute');
+        $query->execute(array('primaryattribute' => $primaryattribute));
+        $rows = $query->fetchAll();
+        $heroes = array();
+
+        foreach ($rows as $row) {
+            $heroes[] = new Hero(array(
+                'id' => $row['id'],
+                'name' => $row['name'],
+                'primaryattribute' => $row['primaryattribute'],
+                'attacktype' => $row['attacktype'],
+                'primaryrole' => $row['primaryrole'],
+                'damagetype' => $row['damagetype'],
+                'description' => $row['description']
+            ));
+
+            return $heroes;
+        }
+        return null;
+    }
+
 }
