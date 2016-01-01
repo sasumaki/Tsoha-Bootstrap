@@ -6,7 +6,7 @@ class Hero extends BaseModel {
 
     public function __construct($attributes) {
         parent::__construct($attributes);
-        $this->validators = array('validate_name', 'validate_attribute', 'validate_damagetype', 'validate_attacktype', 'validate_primaryrole');
+        $this->validators = array('validate_name');
     }
 
     public function save() {
@@ -16,6 +16,16 @@ class Hero extends BaseModel {
         Kint::trace();
         Kint::dump($row);
         // $this->id = $row['id'];
+    }
+
+    public function destroy() {
+        $query = DB::connection()->prepare('DELETE FROM Hero WHERE id = :id');
+        $query->execute(array('id' => $this->id));
+    }
+    public function update() {
+        $query = DB::connection()->prepare('UPDATE Hero (name, primaryattribute, attacktype, primaryrole, damagetype, description) VALUES(:name, :primaryattribute, :attacktype, :primaryrole, :damagetype, :description) RETURNING id');
+        $query->execute(array('name' => $this->name, 'primaryattribute' => $this->primaryattribute, 'attacktype' => $this->attacktype, 'primaryrole' => $this->primaryrole, 'damagetype' => $this->damagetype, 'description' => $this->description));
+         
     }
 
     public static function all() {
@@ -71,37 +81,37 @@ class Hero extends BaseModel {
         return $errors;
     }
 
-    public function validate_attribute() {
-        $errors = array();
-        if ($this->primaryattribute != 'Strength' || $this->primaryattribute != 'Intelligence' || $this->primaryattribute != 'Agility') {
-            $errors[] = 'Attribuuteiksi käy vain Strength, Intelligence tai Agility!';
-        }
-        return $errors;
-    }
-
-    public function validate_primaryrole() {
-        $errors = array();
-        if ($this->primaryrole != 'Core' || $this->primaryrole != 'Support' || $this->primaryattribute != 'Hybrid') {
-            $errors[] = 'Rooleiksi käy vain Core, Support tai Hybrid!';
-        }
-        return $errors;
-    }
-
-    public function validate_attacktype() {
-        $errors = array();
-        if ($this->attacktype != 'Melee' || $this->attacktype != 'Ranged' || $this->attacktype != 'Hybrid') {
-            $errors[] = 'Attacktyypeiksi käy vain Melee, Ranged tai Hybrid!';
-        }
-        return $errors;
-    }
-
-    public function validate_damagetype() {
-        $errors = array();
-        if ($this->damagetype != 'Magical' || $this->damagetype != 'Physical' || $this->damagetype != 'Hybrid') {
-            $errors[] = 'Damagetyypeiksi käy vain Magical, Physical tai Hybrid!';
-        }
-        return $errors;
-    }
+//    public function validate_attribute() {
+//        $errors = array();
+//        if ($this->primaryattribute != 'Strength' || $this->primaryattribute != 'Intelligence' || $this->primaryattribute != 'Agility') {
+//            $errors[] = 'Attribuuteiksi käy vain Strength, Intelligence tai Agility!';
+//        }
+//        return $errors;
+//    }
+//
+//    public function validate_primaryrole() {
+//        $errors = array();
+//        if ($this->primaryrole != 'Core' || $this->primaryrole != 'Support' || $this->primaryattribute != 'Hybrid') {
+//            $errors[] = 'Rooleiksi käy vain Core, Support tai Hybrid!';
+//        }
+//        return $errors;
+//    }
+//
+//    public function validate_attacktype() {
+//        $errors = array();
+//        if ($this->attacktype != 'Melee' || $this->attacktype != 'Ranged' || $this->attacktype != 'Hybrid') {
+//            $errors[] = 'Attacktyypeiksi käy vain Melee, Ranged tai Hybrid!';
+//        }
+//        return $errors;
+//    }
+//
+//    public function validate_damagetype() {
+//        $errors = array();
+//        if ($this->damagetype != 'Magical' || $this->damagetype != 'Physical' || $this->damagetype != 'Hybrid') {
+//            $errors[] = 'Damagetyypeiksi käy vain Magical, Physical tai Hybrid!';
+//        }
+//        return $errors;
+//    }
 
     public static function findattribute($primaryattribute) {
         $query = DB::connection()->prepare('SELECT * FROM Hero WHERE primaryattribute = :primaryattribute');

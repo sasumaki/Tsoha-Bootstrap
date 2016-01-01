@@ -19,12 +19,31 @@ $routes->get('/hero/new', function() {
 $routes->get('/hero/:id', function($id) {
     HeroController::show($id);
 });
+$routes->get('/hero/:id/edit', function($id) {
+    HeroController::edit($id);
+});
+$routes->post('/hero/:id/edit', function($id) {
+    HeroController::update($id);
+});
+
+$routes->post('/hero/:id/destroy', function($id) {
+
+    HeroController::destroy($id);
+});
+
+
+
+
+
+
+
 $routes->get('/lista', function() {
     HelloWorldController::lista();
 });
 $routes->get('/show', function() {
     HelloWorldController::show();
 });
+
 
 $routes->get('/login', function() {
     HelloWorldController::login();

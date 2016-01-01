@@ -21,7 +21,15 @@
         {% for hero in heroes %}
         <tr>
             <td><a href="{{base_path}}/hero/{{hero.id}}">{{hero.name}}</td>
+            {% if hero.primaryattribute is sameas("Strength") %}
             <td><label class="label label-danger">{{hero.primaryattribute}}</label></td>
+            {% endif %}
+            {% if hero.primaryattribute is sameas("Agility") %}
+            <td><label class="label label-success">{{hero.primaryattribute}}</label></td>
+            {% endif %}
+            {% if hero.primaryattribute is sameas("Intelligence") %}
+            <td><label class="label label-primary">{{hero.primaryattribute}}</label></td>
+            {% endif %}
             <td>{{hero.attacktype}}</td>
             <td>{{hero.primaryrole}}</td>
             <td>{{hero.damagetype}}</td>
