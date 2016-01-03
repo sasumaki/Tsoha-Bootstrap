@@ -1,8 +1,11 @@
 # Tietokantasovelluksen esittelysivu
 
+Username: GOD
+Password: GambinaVaras666
+
 Yleisiä linkkejä:
 
-* [Linkki sovellukseeni](http://sasumaki.users.cs.helsinki.fi/Dota-arkisto/)
+* [Linkki sovellukseeni](http://sasumaki.users.cs.helsinki.fi/Dota-arkisto/hero)
 * [Linkki dokumentaatiooni](https://github.com/sasumaki/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
 
 PÄÄSIVU: http://sasumaki.users.cs.helsinki.fi/Dota-arkisto/hero
