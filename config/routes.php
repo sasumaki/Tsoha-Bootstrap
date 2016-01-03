@@ -25,7 +25,14 @@ $routes->get('/hero/:id/edit', function($id) {
 $routes->post('/hero/:id/edit', function($id) {
     HeroController::update($id);
 });
-
+$routes->get('/login', function() {
+    // Kirjautumislomakkeen esittäminen
+    UserController::login();
+});
+$routes->post('/login', function() {
+    // Kirjautumisen käsittely
+    UserController::handle_login();
+});
 $routes->post('/hero/:id/destroy', function($id) {
 
     HeroController::destroy($id);
