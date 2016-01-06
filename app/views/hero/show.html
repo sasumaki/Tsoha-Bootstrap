@@ -4,13 +4,14 @@
 <h1>{{hero.name}}</h1>
 <!-- Painikkeet tähän -->
 
+{% if user_logged_in %}
 <form method="post" action="{{base_path}}/hero/{{hero.id}}/destroy" style="display: inline-block;">
     <button type="submit" class="btn btn-danger">Poista</button>
 </form>
 <form method="get" action="{{base_path}}/hero/{{hero.id}}/edit" style="display: inline-block;">
     <button type="submit" class="btn btn-warning">Muokkaa</button>
 </form>
-
+{% endif %}
 
 
 <!-- Tiedot tulee listana tähän -->

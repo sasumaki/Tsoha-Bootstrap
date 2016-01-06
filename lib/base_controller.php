@@ -21,7 +21,7 @@ class BaseController {
         // Toteuta kirjautumisen tarkistus tähän.
         // Jos käyttäjä ei ole kirjautunut sisään, ohjaa hänet toiselle sivulle (esim. kirjautumissivulle).
         if(!isset($_SESSION['user'])){
-            Redirect::to('/hero', array('message' => 'Et ole kirjautunut'));
+            Redirect::to('/hero', array('message' => 'Et ole kirjautunut!'));
         }
     }
 

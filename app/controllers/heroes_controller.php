@@ -13,10 +13,12 @@ class HeroController extends BaseController {
     }
 
     public static function create() {
+        self::check_logged_in();
         View::make('hero/new.html');
     }
 
     public static function store() {
+        self::check_logged_in();
         $params = $_POST;
         $attributes = array(
             'name' => $params['name'],
@@ -39,11 +41,13 @@ class HeroController extends BaseController {
     }
 
     public static function edit($id) {
+        self::check_logged_in();
         $hero = Hero::find($id);
         View::make('hero/edit.html', array('attributes' => $hero));
     }
 
     public static function update($id) {
+        self::check_logged_in();
         $params = $_POST;
         $attributes = array(
             'id' => $id,
@@ -70,6 +74,7 @@ class HeroController extends BaseController {
     }
 
     public static function destroy($id) {
+        self::check_logged_in();
 
         $hero = new Hero(array('id' => $id));
 

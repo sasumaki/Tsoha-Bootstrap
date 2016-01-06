@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Draft-arkisto</h1>
+<p>
+    <a href="{{base_path}}/drafts/new" class="btn btn-success"> Lisää Draft</a>
+</p>
+
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Nimi</th>
+            <th>Suunnitelma</th>
+            <th>1. Hero</th>
+            <th>2. Hero</th>
+            <th>3. Hero</th>
+            <th>4. Hero</th>
+            <th>5. Hero</th>
+            
+            
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for draft in drafts %}
+        <tr>
+            <td><a href="{{base_path}}/drafts/{{draft.id}}">{{draft.name}}</td
+            <td>{{draft.suunnitelma}}</td>
+            <td>{{draft.hero1}}</td>
+            <td>{{draft.hero2}}</td>
+            <td>{{draft.hero3}}</td>
+            <td>{{draft.hero4}}</td>
+            <td>{{draft.hero5}}</td>
+            
+        </tr>
+        {% endfor%}
+
+    </tbody>
+</table>
+{% endblock %}

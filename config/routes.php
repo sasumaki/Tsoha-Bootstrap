@@ -33,14 +33,38 @@ $routes->post('/login', function() {
     // Kirjautumisen käsittely
     UserController::handle_login();
 });
+$routes->post('/logout', function() {
+    UserController::logout();
+});
 $routes->post('/hero/:id/destroy', function($id) {
 
     HeroController::destroy($id);
 });
+$routes->get('/drafts', function() {
+    DraftController::index();
+});
+$routes->get('/drafts/new', function() {
+    DraftController::create();
+});
+$routes->get('/drafts/:id', function($id) {
+    DraftController::show($id);
+});
+$routes->post('/drafts', function() {
 
+    DraftController::store();
+});
+$routes->get('/drafts/:id/edit', function($id) {
+    DraftController::edit($id);
+}
+);
+$routes->post('/drafts/:id/edit', function($id) {
+    DraftController::update($id);
+}
+);
+$routes->post('/drafts/:id/destroy', function($id) {
 
-
-
+    DraftController::destroy($id);
+});
 
 
 
