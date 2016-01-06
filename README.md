@@ -1,7 +1,7 @@
 # Tietokantasovelluksen esittelysivu
 
-Username: GOD
-Password: GambinaVaras666
+Username: admin
+Password: admin
 
 Yleisiä linkkejä:
 
