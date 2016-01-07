@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Lisää Drafti arkistoosi</h1>
+
+
+{% if errors %}
+<div class="alert alert-danger">
+    <ul>
+        {% for error in errors %}
+        <li>{{error}}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+
+<form method="post" action="{{base_path}}/drafts">
+    <div class="form-group">
+        <label> Nimi</label>
+        <input type="text" name="name" class="form-control" value="{{attribute.name}}">
+    </div>
+    <div class="form-group">
+        <label> 1. Hero</label>
+        <select class="form-control" name="hero1">
+            {% for hero in heroes %}
+            <option value="{{hero.id}}">{{hero.name}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label> 2. Hero</label>
+        <select class="form-control" name="hero2">
+            {% for hero in heroes %}
+            <option value="{{hero.id}}">{{hero.name}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label> 3. Hero</label>
+        <select class="form-control" name="hero3">
+            {% for hero in heroes %}
+            <option value="{{hero.id}}">{{hero.name}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label> 4. Hero</label>
+        <select class="form-control" name="hero4">
+            {% for hero in heroes %}
+            <option value="{{hero.id}}">{{hero.name}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label> 5. Hero</label>
+        <select class="form-control" name="hero5">
+            {% for hero in heroes %}
+            <option value="{{hero.id}}">{{hero.name}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label> Suunnitelma</label>
+        <input type="text" name="suunnitelma" class="form-control" value="{{attributes.suunnitelma}}">
+    </div>
+    <div class="form-group">
+        <label> Vaikeusaste</label>
+        <input type="text" name="vaikeus" class="form-control" value="{{attributes.vaikeus}}">
+    </div>
+    
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Lisää</button>
+    </div>
+</form>
+{% endblock %}

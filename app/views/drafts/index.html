@@ -11,7 +11,6 @@
     <thead>
         <tr>
             <th>Nimi</th>
-            <th>Suunnitelma</th>
             <th>1. Hero</th>
             <th>2. Hero</th>
             <th>3. Hero</th>
@@ -26,7 +25,6 @@
         {% for draft in drafts %}
         <tr>
             <td><a href="{{base_path}}/drafts/{{draft.id}}">{{draft.name}}</td
-            <td>{{draft.suunnitelma}}</td>
             <td>{{draft.hero1}}</td>
             <td>{{draft.hero2}}</td>
             <td>{{draft.hero3}}</td>

@@ -20,7 +20,7 @@ class DraftController extends BaseController {
     public static function create() {
         self::check_logged_in();
 
-        View::make('drafts/create.html');
+        View::make('drafts/new.html');
     }
 
     public static function store() {
@@ -31,6 +31,7 @@ class DraftController extends BaseController {
         $attributes = array(
             'id' => $row['id'],
             'name' => $row['name'],
+            'laatija_id' => $row['laatija_id'],
             'hero1' => $row['hero1'],
             'hero2' => $row['hero2'],
             'hero3' => $row['hero3'],
@@ -63,6 +64,7 @@ class DraftController extends BaseController {
         $attributes = array(
             'id' => $row['id'],
             'name' => $row['name'],
+            'laatija_id' => $row['laatija_id'],
             'hero1' => $row['hero1'],
             'hero2' => $row['hero2'],
             'hero3' => $row['hero3'],

@@ -2,7 +2,7 @@
 
 class Draft extends BaseModel {
 
-    public $id, $name, $hero1, $hero2, $hero3, $hero4, $hero5, $vaikeus, $suunnitelma;
+    public $id, $name, $laatija_id, $hero1, $hero2, $hero3, $hero4, $hero5, $vaikeus, $suunnitelma;
 
     public function __construct($attributes) {
         parent::__construct($attributes);
@@ -10,8 +10,8 @@ class Draft extends BaseModel {
     }
 
     public function save() {
-        $query = DB::connection()->prepare('INSERT INTO Draft (name, hero1, hero2, hero3, hero4, hero5, vaikeus, suunnitelma) VALUES(:name, :hero1, :hero2, :hero3, :hero4, :hero5, :vaikeus, :suunnitelma) RETURNING id');
-        $query->execute(array('name' => $this->name, 'hero1' => $this->hero1, 'hero2' => $this->hero2, 'hero3' => $this->hero3, 'hero4' => $this->hero4, 'hero5' => $this->hero5, 'vaikeus' => $this->vaikeus, 'suunnitelma' => $this->suunnitelma));
+        $query = DB::connection()->prepare('INSERT INTO Draft (name, laatija_id, hero1, hero2, hero3, hero4, hero5, vaikeus, suunnitelma) VALUES(:name, :laatija_id, :hero1, :hero2, :hero3, :hero4, :hero5, :vaikeus, :suunnitelma) RETURNING id');
+        $query->execute(array('name' => $this->name, 'laatija_id' => $this->laatija_id, 'hero1' => $this->hero1, 'hero2' => $this->hero2, 'hero3' => $this->hero3, 'hero4' => $this->hero4, 'hero5' => $this->hero5, 'vaikeus' => $this->vaikeus, 'suunnitelma' => $this->suunnitelma));
         $row = $query->fetch();
     }
 
@@ -21,8 +21,8 @@ class Draft extends BaseModel {
     }
 
     public function update() {
-        $query = DB::connection()->prepare('UPDATE Draft (name, hero1, hero2, hero3, hero4, hero5, vaikeus, suunnitelma) VALUES(:name, :hero1, :hero2, :hero3, :hero4, :hero5, :vaikeus, :suunnitelma) RETURNING id');
-        $query->execute(array('name' => $this->name, 'hero1' => $this->hero1, 'hero2' => $this->hero2, 'hero3' => $this->hero3, 'hero4' => $this->hero4, 'hero5' => $this->hero5, 'vaikeus' => $this->vaikeus, 'suunnitelma' => $this->suunnitelma));
+        $query = DB::connection()->prepare('UPDATE Draft (name, laatija_id, hero1, hero2, hero3, hero4, hero5, vaikeus, suunnitelma) VALUES(:name, :laatija_id, :hero1, :hero2, :hero3, :hero4, :hero5, :vaikeus, :suunnitelma) RETURNING id');
+        $query->execute(array('name' => $this->name, 'laatija_id' => $this->laatija_id, 'hero1' => $this->hero1, 'hero2' => $this->hero2, 'hero3' => $this->hero3, 'hero4' => $this->hero4, 'hero5' => $this->hero5, 'vaikeus' => $this->vaikeus, 'suunnitelma' => $this->suunnitelma));
     }
 
     public static function all() {
@@ -35,6 +35,7 @@ class Draft extends BaseModel {
             $drafts[] = new Draft(array(
                 'id' => $row['id'],
                 'name' => $row['name'],
+                'laatija_id' => $row['laatija_id'],
                 'hero1' => $row['hero1'],
                 'hero2' => $row['hero2'],
                 'hero3' => $row['hero3'],
@@ -50,12 +51,13 @@ class Draft extends BaseModel {
     public static function find($id) {
         $query = DB::connection()->prepare('SELECT * FROM Draft WHERE id = :id LIMIT 1');
         $query->execute(array('id' => $id));
-        $row = $query->fetchAll();
+        $row = $query->fetch();
 
         if($row) {
             $draft = new Draft(array(
                 'id' => $row['id'],
                 'name' => $row['name'],
+                'laatija_id' => $row['laatija_id'],
                 'hero1' => $row['hero1'],
                 'hero2' => $row['hero2'],
                 'hero3' => $row['hero3'],

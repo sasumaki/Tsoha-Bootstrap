@@ -8,8 +8,8 @@ class HeroController extends BaseController {
     }
 
     public static function show($id) {
-        $heroes = Hero::find($id);
-        View::make('hero/show.html', array('hero' => $heroes));
+        $hero = Hero::find($id);
+        View::make('hero/show.html', array('hero' => $hero));
     }
 
     public static function create() {
