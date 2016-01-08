@@ -6,7 +6,7 @@ class DraftController extends BaseController {
         self::check_logged_in();
 
         $drafts = Draft::all();
-
+        
         View::make('drafts/index.html', array('drafts' => $drafts));
     }
 
@@ -19,8 +19,8 @@ class DraftController extends BaseController {
 
     public static function create() {
         self::check_logged_in();
-
-        View::make('drafts/new.html');
+        $heroes = Hero::all();
+        View::make('drafts/new.html', array('heroes' => $heroes));
     }
 
     public static function store() {
