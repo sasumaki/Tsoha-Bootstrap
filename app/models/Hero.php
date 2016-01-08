@@ -22,7 +22,7 @@ class Hero extends BaseModel {
         $query->execute(array('id' => $this->id));
     }
     public function update() {
-        $query = DB::connection()->prepare('UPDATE Hero (name, primaryattribute, attacktype, primaryrole, damagetype, description) VALUES(:name, :primaryattribute, :attacktype, :primaryrole, :damagetype, :description) RETURNING id');
+        $query = DB::connection()->prepare('UPDATE Hero SET name = :name, primaryattribute = :primaryattribute, attacktype = :attacktype, primaryrole = :primaryrole, damagetype = :damagetype, description = :description WHERE id = :id');
         $query->execute(array('id' => $this->id, 'name' => $this->name, 'primaryattribute' => $this->primaryattribute, 'attacktype' => $this->attacktype, 'primaryrole' => $this->primaryrole, 'damagetype' => $this->damagetype, 'description' => $this->description));
          
     }
@@ -80,37 +80,7 @@ class Hero extends BaseModel {
         return $errors;
     }
 
-//    public function validate_attribute() {
-//        $errors = array();
-//        if ($this->primaryattribute != 'Strength' || $this->primaryattribute != 'Intelligence' || $this->primaryattribute != 'Agility') {
-//            $errors[] = 'Attribuuteiksi käy vain Strength, Intelligence tai Agility!';
-//        }
-//        return $errors;
-//    }
-//
-//    public function validate_primaryrole() {
-//        $errors = array();
-//        if ($this->primaryrole != 'Core' || $this->primaryrole != 'Support' || $this->primaryattribute != 'Hybrid') {
-//            $errors[] = 'Rooleiksi käy vain Core, Support tai Hybrid!';
-//        }
-//        return $errors;
-//    }
-//
-//    public function validate_attacktype() {
-//        $errors = array();
-//        if ($this->attacktype != 'Melee' || $this->attacktype != 'Ranged' || $this->attacktype != 'Hybrid') {
-//            $errors[] = 'Attacktyypeiksi käy vain Melee, Ranged tai Hybrid!';
-//        }
-//        return $errors;
-//    }
-//
-//    public function validate_damagetype() {
-//        $errors = array();
-//        if ($this->damagetype != 'Magical' || $this->damagetype != 'Physical' || $this->damagetype != 'Hybrid') {
-//            $errors[] = 'Damagetyypeiksi käy vain Magical, Physical tai Hybrid!';
-//        }
-//        return $errors;
-//    }
+
 
     public static function findattribute($primaryattribute) {
         $query = DB::connection()->prepare('SELECT * FROM Hero WHERE primaryattribute = :primaryattribute');
