@@ -22,7 +22,7 @@ class Draft extends BaseModel {
 
     public function update() {
         $query = DB::connection()->prepare('UPDATE Draft (name, laatija_id, hero1, hero2, hero3, hero4, hero5, vaikeus, suunnitelma) VALUES(:name, :laatija_id, :hero1, :hero2, :hero3, :hero4, :hero5, :vaikeus, :suunnitelma) RETURNING id');
-        $query->execute(array('name' => $this->name, 'laatija_id' => $this->laatija_id, 'hero1' => $this->hero1, 'hero2' => $this->hero2, 'hero3' => $this->hero3, 'hero4' => $this->hero4, 'hero5' => $this->hero5, 'vaikeus' => $this->vaikeus, 'suunnitelma' => $this->suunnitelma));
+        $query->execute(array('id' => $this->id, 'name' => $this->name, 'laatija_id' => $this->laatija_id, 'hero1' => $this->hero1, 'hero2' => $this->hero2, 'hero3' => $this->hero3, 'hero4' => $this->hero4, 'hero5' => $this->hero5, 'vaikeus' => $this->vaikeus, 'suunnitelma' => $this->suunnitelma));
     }
 
     public static function all() {
