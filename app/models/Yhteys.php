@@ -19,7 +19,7 @@ class Yhteys extends BaseModel {
     }
 
     public function find($id) {
-        $query = DB::connection()->prepare('SELECT hero.id, hero.name FROM HERO,Draft, Yhteys WHERE Yhteys.Draft_id = :id, HERO.id = Yhteys.hero_id, Draft.id = Yhteys.Draft_id');
+        $query = DB::connection()->prepare('SELECT hero.id, hero.name FROM HERO,Draft, Yhteys WHERE Yhteys.Draft_id = :id AND HERO.id = Yhteys.hero_id AND Draft.id = Yhteys.Draft_id');
         $query->execute(array('id' => $id));
 
         $rows = $query->fetchAll();
@@ -27,8 +27,10 @@ class Yhteys extends BaseModel {
 
         foreach ($rows as $row) {
             $yhteys[] = new Yhteys(array(
-                'hero_id' => $row['hero_id'],
-                'draft_id' => $row['draft_id']
+                
+                'id' => $row['id'],
+                'name' => $row['name']
+                    
             ));
         }
         return $yhteys;
