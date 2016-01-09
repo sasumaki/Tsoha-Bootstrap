@@ -82,9 +82,9 @@ class Hero extends BaseModel {
 
 
 
-    public static function findattribute($primaryattribute) {
-        $query = DB::connection()->prepare('SELECT * FROM Hero WHERE primaryattribute = :primaryattribute');
-        $query->execute(array('primaryattribute' => $primaryattribute));
+    public static function findname($name) {
+        $query = DB::connection()->prepare('SELECT * FROM Hero WHERE name = :name');
+        $query->execute(array('name' => $name));
         $rows = $query->fetchAll();
         $heroes = array();
 

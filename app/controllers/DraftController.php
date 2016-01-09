@@ -6,15 +6,17 @@ class DraftController extends BaseController {
         self::check_logged_in();
 
         $drafts = Draft::all();
+        $hero = Draft::all();
         
-        View::make('drafts/index.html', array('drafts' => $drafts));
+        View::make('drafts/index.html', array('drafts' => $drafts, 'hero' => $hero));
     }
 
     public static function show($id) {
         self::check_logged_in();
 
         $draft = Draft::find($id);
-        View::make('drafts/show.html', array('draft' => $draft));
+        $heroes = Draft::all();
+        View::make('drafts/show.html', array('draft' => $draft,'heroes' =>$heroes));
     }
 
     public static function create() {

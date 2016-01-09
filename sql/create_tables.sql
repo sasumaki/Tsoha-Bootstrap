@@ -27,3 +27,11 @@ damagetype varchar(50) NOT NULL,
 description varchar(400)
 
 );
+
+CREATE TABLE Yhteys (
+    hero_id INTEGER NOT NULL,
+    FOREIGN KEY(hero_id) REFERENCES HERO(id),
+    draft_id INTEGER NOT NULL,
+    FOREIGN KEY(draft_id) REFERENCES Draft(id),
+    PRIMARY KEY (hero_id, draft_id)
+);
