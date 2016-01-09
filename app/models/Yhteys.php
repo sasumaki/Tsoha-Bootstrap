@@ -27,7 +27,7 @@ class Yhteys extends BaseModel {
 
         foreach ($rows as $row) {
             $yhteys[] = new Yhteys(array(
-                
+                'id' => $row['id'],
                 'name' => $row['name']
                     
             ));
