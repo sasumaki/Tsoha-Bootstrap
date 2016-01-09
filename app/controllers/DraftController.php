@@ -16,9 +16,9 @@ class DraftController extends BaseController {
 
         $draft = Draft::find($id);
         
-        $hero = Hero::find($id);
+        $hero = Yhteys::find($id);
         
-        View::make('drafts/show.html', array('draft' => $draft,'hero' =>$hero));
+        View::make('drafts/show.html', array('draft' => $draft, 'hero' => $hero));
     }
 
     public static function create() {

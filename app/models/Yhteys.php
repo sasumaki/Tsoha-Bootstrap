@@ -19,9 +19,7 @@ class Yhteys extends BaseModel {
     }
 
     public function find($id) {
-        $query = DB::connection()->prepare('SELECT hero.id, hero.name, draft.id, draft.name FROM Draft '
-                . 'JOIN Yhteys ON Draft.id = Yhteys.draft_id '
-                . 'JOIN HERO ON hero.id = Yhteys.hero_id WHERE Draft.id = :id');
+        $query = DB::connection()->prepare('SELECT hero.id, hero.name FROM HERO, Yhteys WHERE Yhteys.Draft_id = :id');
         $query->execute(array('id' => $id));
 
         $rows = $query->fetchAll();
