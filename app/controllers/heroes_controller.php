@@ -9,7 +9,8 @@ class HeroController extends BaseController {
 
     public static function show($id) {
         $hero = Hero::find($id);
-        View::make('hero/show.html', array('hero' => $hero));
+        $drafts = Yhteys::findDraft($id);
+        View::make('hero/show.html', array('hero' => $hero, 'drafts' => $drafts));
     }
 
     public static function create() {

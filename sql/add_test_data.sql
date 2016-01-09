@@ -8,8 +8,8 @@ INSERT INTO Hero (name, primaryattribute, attacktype,primaryrole, damagetype) VA
 INSERT INTO Hero (name, primaryattribute, attacktype,primaryrole, damagetype) VALUES ('Sniper', 'Strength','Melee','Core','Physical');
 INSERT INTO Kayttaja (username, password) VALUES ('admin', 'admin');
 
-INSERT INTO Draft (name,hero1,hero2,hero3,hero4,hero5,vaikeus, suunnitelma) VALUES ('Kappadraft','1' ,'2','3','4','5', 'Helppo','Tapa kaikki');
-INSERT INTO Draft (name,hero1,hero2,hero3,hero4,hero5,vaikeus, suunnitelma) VALUES ('Uberdraft','1' ,'2','6','7','8', 'Helppo','Tapa kaikki');
+INSERT INTO Draft (name,hero1,hero2,hero3,hero4,hero5,vaikeus, suunnitelma) VALUES ('Kappadraft','Sven' ,'Crystal Maiden','Meepo','Abaddon','Visage', 'Helppo','Tapa kaikki');
+INSERT INTO Draft (name,hero1,hero2,hero3,hero4,hero5,vaikeus, suunnitelma) VALUES ('Uberdraft','Sven' ,'Crystal Maiden','Elder Titan','Anti Mage','Sniper', 'Helppo','Tapa kaikki');
 
 INSERT INTO Yhteys (hero_id, draft_id) VALUES ('1','1');
 INSERT INTO Yhteys (hero_id, draft_id) VALUES ('2','1');

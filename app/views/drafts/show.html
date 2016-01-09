@@ -19,12 +19,12 @@
     
     
     <li><strong>Laatija:</strong> {{draft.laatija_id}}</li>
-    <li><strong>1. Hero: </strong>{{hero.id}}</li>
-    <li><strong>2. Hero: </strong>{{hero.name}}</li>
-    <li><strong>3. Hero: </strong>{{draft.hero3}}</li>
-    <li><strong>4. Hero: </strong>{{draft.hero4}}</li>
-    <li><strong>5. Hero: </strong>{{draft.hero5}}</li>
-    <li><strong>Vaikeusaste:</strong> {{draft.vaikeusaste}}</li>
+    <li><strong>Herot:</strong></li>
+    {% for hero in heroes %}
+    <li><strong>     </strong><a href="{{base_path}}/hero/{{hero.id}}">      {{hero.name}}</a></li>
+    {% endfor %}
+    
+    <li><strong>Vaikeusaste:</strong> {{draft.vaikeus}}</li>
     <li><strong>Suunnitelma:</strong> {{draft.suunnitelma}}</li>
 </ul>
 <!-- Kuvaus tulee tähän -->

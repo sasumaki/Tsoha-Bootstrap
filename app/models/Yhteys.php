@@ -2,7 +2,7 @@
 
 class Yhteys extends BaseModel {
 
-    public $hero_id, $draft_id;
+    public $hero_id, $draft_id, $name, $id;
 
     public function __construct($attributes) {
         parent::__construct($attributes);
@@ -18,8 +18,24 @@ class Yhteys extends BaseModel {
         $query->execute(array('hero_id' => $this->hero_id, 'draft_id' => $this->draft_id));
     }
 
-    public function find($id) {
+    public function findHero($id) {
         $query = DB::connection()->prepare('SELECT hero.id, hero.name FROM HERO INNER JOIN Yhteys ON hero.id = yhteys.hero_id WHERE Yhteys.Draft_id = :id');
+        $query->execute(array('id' => $id));
+
+        $rows = $query->fetchAll();
+        $yhteys = array();
+
+        foreach ($rows as $row) {
+            $yhteys[] = new Yhteys(array(
+                'id' => $row['id'],
+                'name' => $row['name']
+                    
+            ));
+        }
+        return $yhteys;
+    }
+    public function findDraft($id) {
+        $query = DB::connection()->prepare('SELECT Draft.id, Draft.name FROM Draft INNER JOIN Yhteys ON Draft.id = yhteys.draft_id WHERE Yhteys.Hero_id = :id');
         $query->execute(array('id' => $id));
 
         $rows = $query->fetchAll();
