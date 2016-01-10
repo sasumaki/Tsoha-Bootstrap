@@ -4,6 +4,7 @@ class HeroController extends BaseController {
 
     public static function lista() {
         $heroes = Hero::all();
+        
         View::make('hero/lista.html', array('heroes' => $heroes));
     }
 

@@ -113,7 +113,8 @@ class DraftController extends BaseController {
 
             Redirect::to('/drafts' . $draft->id, array('message' => 'Drafti on lisätty arkistoon!'));
         } else {
-            View::make('drafts/new.html', array('errors' => $errors, 'attributes' => $attributes));
+            $heroes = Hero::all();
+            View::make('drafts/new.html', array('errors' => $errors, 'attributes' => $attributes, 'heroes' => $heroes));
         }
     }
 
