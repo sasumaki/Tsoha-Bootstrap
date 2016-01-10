@@ -14,8 +14,8 @@ class Yhteys extends BaseModel {
     }
 
     public function destroy() {
-        $query = DB::connection()->prepare('DELETE FROM Yhteys WHERE hero_id = :hero_id AND draft_id = :draft_id');
-        $query->execute(array('hero_id' => $this->hero_id, 'draft_id' => $this->draft_id));
+        $query = DB::connection()->prepare('DELETE FROM Yhteys WHERE hero_id = :hero_id');
+        $query->execute(array('hero_id' => $this->hero_id));
     }
 
     public function findHero($id) {
@@ -29,11 +29,11 @@ class Yhteys extends BaseModel {
             $yhteys[] = new Yhteys(array(
                 'id' => $row['id'],
                 'name' => $row['name']
-                    
             ));
         }
         return $yhteys;
     }
+
     public function findDraft($id) {
         $query = DB::connection()->prepare('SELECT Draft.id, Draft.name FROM Draft INNER JOIN Yhteys ON Draft.id = yhteys.draft_id WHERE Yhteys.Hero_id = :id');
         $query->execute(array('id' => $id));
@@ -45,7 +45,21 @@ class Yhteys extends BaseModel {
             $yhteys[] = new Yhteys(array(
                 'id' => $row['id'],
                 'name' => $row['name']
-                    
+            ));
+        }
+        return $yhteys;
+    }
+
+    public function findDraftID($id) {
+        $query = DB::connection()->prepare('SELECT Draft.id FROM Draft INNER JOIN Yhteys ON Draft.id = yhteys.draft_id WHERE Yhteys.Hero_id = :id');
+        $query->execute(array('id' => $id));
+
+        $rows = $query->fetchAll();
+        $yhteys = array();
+
+        foreach ($rows as $row) {
+            $yhteys[] = new Yhteys(array(
+                'id' => $row['id']
             ));
         }
         return $yhteys;

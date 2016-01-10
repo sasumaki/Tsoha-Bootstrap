@@ -49,6 +49,23 @@ class DraftController extends BaseController {
 
         if (count($errors) == 0) {
             $draft->save();
+            
+            $id = $draft->id;
+            $yhteys1 = new Yhteys('hero1', $id);
+            $yhteys1->save();
+            
+            $yhteys2 = new Yhteys('hero2', $id);
+            $yhteys2->save();
+            
+            $yhteys3 = new Yhteys('hero3', $id);
+            $yhteys3->save();
+            
+            $yhteys4 = new Yhteys('hero4', $id);
+            $yhteys4->save();
+            
+            $yhteys5 = new Yhteys('hero5', $id);
+            $yhteys5->save();
+            
             Redirect::to('/drafts' . $draft->id, array('message' => 'Drafti on lisätty arkistoon!'));
         } else {
             View::make('drafts/new.html', array('errors' => $errors, 'attributes' => $attributes));

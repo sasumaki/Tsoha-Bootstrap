@@ -78,11 +78,22 @@ class HeroController extends BaseController {
         self::check_logged_in();
 
         $hero = new Hero(array('id' => $id));
+        $yhteys = new Yhteys(array('hero_id' => $id));
+        $draftids = array(Yhteys::findDraftID($id));
+
+        $yhteys->destroy();
+
+//        foreach ($draftids as $draft) {
+//            $draftaus = Draft::find($draft);
+//            $draftaus->destroy();
+//        }
+
+
 
         $hero->destroy();
 
 
-        Redirect::to('/hero', array('message' => 'Peli on poistettu onnistuneesti!'));
+        Redirect::to('/hero', array('message' => 'Hero on poistettu onnistuneesti!'));
     }
 
 }
