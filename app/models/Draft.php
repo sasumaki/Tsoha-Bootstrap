@@ -6,7 +6,7 @@ class Draft extends BaseModel {
 
     public function __construct($attributes) {
         parent::__construct($attributes);
-        $this->validators = array('validate_name');
+        $this->validators = array('validate_name', 'validate_heroes');
     }
 
     public function save() {
@@ -81,6 +81,13 @@ class Draft extends BaseModel {
         }
         if (strlen($this->name) < 2) {
             $errors[] = 'Nimen pituuden tulee olla vähintään kaksi merkkiä!';
+        }
+        return $errors;
+    }
+    public function validate_heroes(){
+        $errors = array();
+        if($this->hero1 == $this->hero2 || $this->hero1 == $this->hero3 ||$this->hero1 == $this->hero4 ||$this->hero1 == $this->hero5 ||$this->hero2 == $this->hero3 ||$this->hero4 == $this->hero5 ||$this->hero3 == $this->hero4 ){
+            $errors[] = 'Ei saa olla kahta samaa Heroa!';
         }
         return $errors;
     }
