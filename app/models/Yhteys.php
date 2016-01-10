@@ -54,15 +54,16 @@ class Yhteys extends BaseModel {
         $query = DB::connection()->prepare('SELECT Draft.id FROM Draft INNER JOIN Yhteys ON Draft.id = yhteys.draft_id WHERE Yhteys.Hero_id = :id');
         $query->execute(array('id' => $id));
 
-        $rows = $query->fetchAll();
-        $yhteys = array();
+        $row = $query->fetch();
 
-        foreach ($rows as $row) {
-            $yhteys[] = new Yhteys(array(
+
+        if ($row) {
+            $yhteys = new Yhteys(array(
                 'id' => $row['id']
             ));
+            return $yhteys;
         }
-        return $yhteys;
+        return null;
     }
 
 }

@@ -30,8 +30,8 @@ description varchar(400)
 
 CREATE TABLE Yhteys (
     hero_id INTEGER NOT NULL,
-    FOREIGN KEY(hero_id) REFERENCES HERO(id),
+    FOREIGN KEY(hero_id) REFERENCES HERO(id) ON UPDATE CASCADE ON DELETE CASCADE,
     draft_id INTEGER NOT NULL,
-    FOREIGN KEY(draft_id) REFERENCES Draft(id),
+    FOREIGN KEY(draft_id) REFERENCES Draft(id) ON UPDATE CASCADE ON DELETE CASCADE,
     PRIMARY KEY (hero_id, draft_id)
 );

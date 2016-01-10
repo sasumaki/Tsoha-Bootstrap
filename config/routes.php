@@ -52,6 +52,7 @@ $routes->get('/drafts/:id', function($id) {
 $routes->post('/drafts', function() {
 
     DraftController::store();
+    yhteyscontroller::store();
 });
 $routes->get('/drafts/:id/edit', function($id) {
     DraftController::edit($id);

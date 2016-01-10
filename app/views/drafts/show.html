@@ -17,8 +17,9 @@
 
 <ul>
     
-    
-    <li><strong>Laatija:</strong> {{draft.laatija_id}}</li>
+    {% for kayttaja in kayttajat %}
+    <li><strong>Laatija:</strong> {{kayttaja.username}}</li>
+    {% endfor %}
     <li><strong>Herot:</strong></li>
     {% for hero in heroes %}
     <li><strong>     </strong><a href="{{base_path}}/hero/{{hero.id}}">      {{hero.name}}</a></li>

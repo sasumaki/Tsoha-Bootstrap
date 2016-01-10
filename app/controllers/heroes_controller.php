@@ -78,17 +78,17 @@ class HeroController extends BaseController {
         self::check_logged_in();
 
         $hero = new Hero(array('id' => $id));
-        $yhteys = new Yhteys(array('hero_id' => $id));
-        $draftids = Yhteys::findDraftID($id);
-
-
-        $yhteys->destroy();
-
-        while ($draftids != NULL) {
-            $draft = new Draft(array('id' => $draftids));
-            $draft->destroy();
-            $draftids = Yhteys::findDraftID($id);
-        }
+//        $yhteys = new Yhteys(array('hero_id' => $id));
+//        $draftids = Yhteys::findDraftID($id);
+//
+//
+//        $yhteys->destroy();
+//
+//        while ($draftids != NULL) {
+//            $draft = new Draft(array('id' => $draftids->draft_id));
+//            $draft->destroy();
+//            $draftids = Yhteys::findDraftID($id);
+//        }
 
 
 
