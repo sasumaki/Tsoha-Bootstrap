@@ -13,10 +13,6 @@ class Draft extends BaseModel {
         $query = DB::connection()->prepare('INSERT INTO Draft (name, laatija_id, hero1, hero2, hero3, hero4, hero5, vaikeus, suunnitelma) VALUES(:name, :laatija_id, :hero1, :hero2, :hero3, :hero4, :hero5, :vaikeus, :suunnitelma) RETURNING id');
         $query->execute(array('name' => $this->name, 'laatija_id' => $this->laatija_id, 'hero1' => $this->hero1, 'hero2' => $this->hero2, 'hero3' => $this->hero3, 'hero4' => $this->hero4, 'hero5' => $this->hero5, 'vaikeus' => $this->vaikeus, 'suunnitelma' => $this->suunnitelma));
         
-        $query = DB::connection()->prepare('INSERT INTO Yhteys (hero_id, draft_id) VALUES (:hero1, SELECT LASTVAL())');
-        $query->execute(array('hero1' => $this->hero1));
-
-
         
     }
 

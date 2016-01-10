@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
+{% import "macros/alerts.html" as alerts %}
+
+{% if errors %}
+{{alerts.error_bar(errors)}}
+{% endif %}
 <h1>Lisää Drafti arkistoosi</h1>
 
 

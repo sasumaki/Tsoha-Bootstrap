@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
+{% import "macros/alerts.html" as alerts %}
+
+{% if message is not empty %}
+{{alerts.success_message(message)}}
+{% endif %}
 <h1>{{draft.name}}</h1>
 <!-- Painikkeet tähän -->
 {% if user_logged_in %}

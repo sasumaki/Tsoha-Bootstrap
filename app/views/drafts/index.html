@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% import "macros/alerts.html" as alerts %}
+
+{% if message is not empty %}
+{{alerts.success_message(message)}}
+{% endif %}
 <h1>Draft-arkisto</h1>
 <p>
     <a href="{{base_path}}/drafts/new" class="btn btn-success"> Lisää Draft</a>
@@ -11,13 +16,12 @@
     <thead>
         <tr>
             <th>Nimi</th>
-            <th>1. Hero</th>
-            <th>2. Hero</th>
-            <th>3. Hero</th>
-            <th>4. Hero</th>
-            <th>5. Hero</th>
-            
-            
+            <th>Laatija: </th>
+            <th>Vaikeus: </th>
+            <th>Suunnitelma: </th>
+
+
+
         </tr>
     </thead>
 
@@ -25,12 +29,14 @@
         {% for draft in drafts %}
         <tr>
             <td><a href="{{base_path}}/drafts/{{draft.id}}">{{draft.name}}</td>
-            <td>{{draft.hero1}}</td>
-            <td>{{draft.hero2}}</td>
-            <td>{{draft.hero3}}</td>
-            <td>{{draft.hero4}}</td>
-            <td>{{draft.hero5}}</td>
             
+            <td>{{draft.laatija_id}}</td>
+            
+            <td>{{draft.vaikeus}}</td>
+            <td>{{draft.suunnitelma}}</td>
+
+
+
         </tr>
         {% endfor%}
 

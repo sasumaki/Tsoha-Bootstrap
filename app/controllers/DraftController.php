@@ -6,21 +6,76 @@ class DraftController extends BaseController {
         self::check_logged_in();
 
         $drafts = Draft::all();
+        
+        foreach($drafts as $draft){
+            $kayttajaid = $draft->id;
+        }
+        $kayttaja = Kayttaja::find($kayttajaid);
+
+        foreach ($drafts as $draft) {
+            $hero = $draft->hero1;
+            $yhteys = new Yhteys(array(
+                'hero_id' => $hero,
+                'draft_id' => $draft->id
+            ));
+            $testi = Yhteys::find($hero, $draft->id);
+            if ($testi == null) {
+                $yhteys->save();
+            }
+
+            $hero = $draft->hero2;
+            $yhteys = new Yhteys(array(
+                'hero_id' => $hero,
+                'draft_id' => $draft->id
+            ));
+            $testi = Yhteys::find($hero, $draft->id);
+            if ($testi == null) {
+                $yhteys->save();
+            }
+
+            $hero = $draft->hero3;
+            $yhteys = new Yhteys(array(
+                'hero_id' => $hero,
+                'draft_id' => $draft->id
+            ));
+            $testi = Yhteys::find($hero, $draft->id);
+            if ($testi == null) {
+                $yhteys->save();
+            }
+
+            $hero = $draft->hero4;
+            $yhteys = new Yhteys(array(
+                'hero_id' => $hero,
+                'draft_id' => $draft->id
+            ));
+            $testi = Yhteys::find($hero, $draft->id);
+            if ($testi == null) {
+                $yhteys->save();
+            }
+
+            $hero = $draft->hero5;
+            $yhteys = new Yhteys(array(
+                'hero_id' => $hero,
+                'draft_id' => $draft->id
+            ));
+            $testi = Yhteys::find($hero, $draft->id);
+            if ($testi == null) {
+                $yhteys->save();
+            }
+        }
 
 
-        View::make('drafts/index.html', array('drafts' => $drafts));
+        View::make('drafts/index.html', array('drafts' => $drafts, 'kayttajat' => $kayttaja));
     }
 
     public static function show($id) {
         self::check_logged_in();
-        
-
-
 
         $draft = Draft::find($id);
         $kayttajat = Kayttaja::find($draft->laatija_id);
         $heroes = Yhteys::findHero($id);
 
+        
         View::make('drafts/show.html', array('draft' => $draft, 'heroes' => $heroes, 'kayttajat' => $kayttajat));
     }
 
@@ -51,9 +106,11 @@ class DraftController extends BaseController {
         $errors = $draft->errors();
 
         if (count($errors) == 0) {
-            
+
             $draft->save();
-            
+
+
+
             Redirect::to('/drafts' . $draft->id, array('message' => 'Drafti on lisätty arkistoon!'));
         } else {
             View::make('drafts/new.html', array('errors' => $errors, 'attributes' => $attributes));

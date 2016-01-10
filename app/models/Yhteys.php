@@ -9,8 +9,25 @@ class Yhteys extends BaseModel {
     }
 
     public function save() {
-        $query = DB::connection()->prepare('INSERT INTO Yhteys (hero_id, draft_id) VALUES(:hero_id, :draft_id) RETURNING id');
+        $query = DB::connection()->prepare('INSERT INTO Yhteys (hero_id, draft_id) VALUES(:hero_id, :draft_id)');
         $query->execute(array('hero_id' => $this->hero_id, 'draft_id' => $this->draft_id));
+    }
+
+    public function find($hero_id, $draft_id) {
+        $query = DB::connection()->prepare('SELECT * FROM Yhteys WHERE hero_id = :hero_id AND draft_id = :draft_id LIMIT 1');
+        $query->execute(array('hero_id' => $hero_id, 'draft_id' => $draft_id));
+        $row = $query->fetch();
+
+        if ($row) {
+            $yhteys = new Yhteys(array(
+                'hero_id' => $row['hero_id'],
+                'draft_id' => $row['draft_id']
+                
+            ));
+            return $yhteys;
+        }
+
+        return null;
     }
 
     public function destroy() {
