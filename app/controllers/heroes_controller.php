@@ -79,14 +79,16 @@ class HeroController extends BaseController {
 
         $hero = new Hero(array('id' => $id));
         $yhteys = new Yhteys(array('hero_id' => $id));
-        $draftids = array(Yhteys::findDraftID($id));
+        $draftids = Yhteys::findDraftID($id);
+
 
         $yhteys->destroy();
 
-//        foreach ($draftids as $draft) {
-//            $draftaus = Draft::find($draft);
-//            $draftaus->destroy();
-//        }
+        while ($draftids != NULL) {
+            $draft = new Draft(array('id' => $draftids));
+            $draft->destroy();
+            $draftids = Yhteys::findDraftID($id);
+        }
 
 
 

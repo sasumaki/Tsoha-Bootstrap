@@ -35,7 +35,7 @@ class Yhteys extends BaseModel {
     }
 
     public function findDraft($id) {
-        $query = DB::connection()->prepare('SELECT Draft.id, Draft.name FROM Draft INNER JOIN Yhteys ON Draft.id = yhteys.draft_id WHERE Yhteys.Hero_id = :id');
+        $query = DB::connection()->prepare('SELECT Draft.id, Draft.name FROM Draft INNER JOIN Yhteys ON Draft.id = yhteys.draft_id WHERE Yhteys.Hero_id = :id LIMIT 1');
         $query->execute(array('id' => $id));
 
         $rows = $query->fetchAll();
